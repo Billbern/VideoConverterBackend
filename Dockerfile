@@ -44,8 +44,8 @@ WORKDIR /mongconverter
 
 COPY . /mongconverter
 
-RUN python3 -m pip --proxy "http://192.168.1.154:8080" --no-cache-dir install --upgrade pip && \
-    python3 -m pip --proxy "http://192.168.1.154:8080" --no-cache-dir install -r requirements.txt
+RUN python3 -m pip --no-cache-dir install --upgrade pip && \
+    python3 -m pip --no-cache-dir install -r requirements.txt
 
 
 EXPOSE 5000

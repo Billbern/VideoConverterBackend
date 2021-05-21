@@ -4,10 +4,6 @@ USER root
 
 RUN apt-get update
 
-# RUN apt-get -y --no-install-recommends install \
-#     sudo \
-#     vim \
-#     wget 
 
 RUN apt-get -y --no-install-recommends install \
     build-essential \
@@ -20,13 +16,6 @@ RUN apt-get -y --no-install-recommends install \
     python3.8-dev \
     python-dev \
     python3-dev
-
-# RUN apt-get -y --no-install-recommends install \
-#     git \
-#     cmake \
-#     autoconf \
-#     automake \
-#     libtool 
 
 RUN apt-get -y --no-install-recommends install \ 
     gstreamer-1.0 \
@@ -61,6 +50,6 @@ RUN python3 -m pip --proxy "http://192.168.1.154:8080" --no-cache-dir install --
 
 EXPOSE 5000
 
-ENTRYPOINT [ "python3", "main.py" ]
+# ENTRYPOINT [ "python3", "main.py" ]
 
-# CMD ["main.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
